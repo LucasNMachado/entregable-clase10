@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "The Shawshank Redemption",
+    "description": "Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.",
+    "code": "TSR001",
+    "price": 9.99,
+    "status": true,
+    "stock": 50,
+    "category": "Drama",
+    "thumbnails": [
+      "https://example.com/thumbnails/tsr001-1.jpg",
+      "https://example.com/thumbnails/tsr001-2.jpg",
+      "https://example.com/thumbnails/tsr001-3.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "The Godfather",
+    "description": "The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son.",
+    "code": "GFD002",
+    "price": 12.99,
+    "status": true,
+    "stock": 30,
+    "category": "Crime",
+    "thumbnails": [
+      "https://example.com/thumbnails/gfd002-1.jpg",
+      "https://example.com/thumbnails/gfd002-2.jpg",
+      "https://example.com/thumbnails/gfd002-3.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Pulp Fiction",
+    "description": "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.",
+    "code": "PLF003",
+    "price": 11.99,
+    "status": true,
+    "stock": 20,
+    "category": "Crime",
+    "thumbnails": [
+      "https://example.com/thumbnails/plf003-1.jpg",
+      "https://example.com/thumbnails/plf003-2.jpg",
+      "https://example.com/thumbnails/plf003-3.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "The Dark Knight",
+    "description": "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.",
+    "code": "TDK004",
+    "price": 14.99,
+    "status": true,
+    "stock": 15,
+    "category": "Action",
+    "thumbnails": [
+      "https://example.com/thumbnails/tdk004-1.jpg",
+      "https://example.com/thumbnails/tdk004-2.jpg",
+      "https://example.com/thumbnails/tdk004-3.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Inception",
+    "description": "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.",
+    "code": "INC005",
+    "price": 10.99,
+    "status": true,
+    "stock": 25,
+    "category": "Sci-Fi",
+    "thumbnails": [
+      "https://example.com/thumbnails/inc005-1.jpg",
+      "https://example.com/thumbnails/inc005-2.jpg",
+      "https://example.com/thumbnails/inc005-3.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "title": "The Matrix",
+    "description": "A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.",
+    "code": "MTR006",
+    "price": 13.99,
+    "status": true,
+    "stock": 18,
+    "category": "Sci-Fi",
+    "thumbnails": [
+      "https://example.com/thumbnails/mtr006-1.jpg",
+      "https://example.com/thumbnails/mtr006-2.jpg",
+      "https://example.com/thumbnails/mtr006-3.jpg"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Fight Club",
+    "description": "An insomniac office worker and a devil-may-care soapmaker form an underground fight club that evolves into something much, much more.",
+    "code": "FCL007",
+    "price": 9.99,
+    "status": true,
+    "stock": 22,
+    "category": "Drama",
+    "thumbnails": [
+      "https://example.com/thumbnails/fcl007-1.jpg",
+      "https://example.com/thumbnails/fcl007-2.jpg",
+      "https://example.com/thumbnails/fcl007-3.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Forrest Gump",
+    "description": "The presidencies of Kennedy and Johnson, the Vietnam War, the Watergate scandal and other historical events unfold through the perspective of an Alabama man with an IQ of 75, whose only desire is to be reunited with his childhood sweetheart.",
+    "code": "FGP008",
+    "price": 11.99,
+    "status": true,
+    "stock": 28,
+    "category": "Drama",
+    "thumbnails": [
+      "https://example.com/thumbnails/fgp008-1.jpg",
+      "https://example.com/thumbnails/fgp008-2.jpg",
+      "https://example.com/thumbnails/fgp008-3.jpg"
+    ]
+  }
+]

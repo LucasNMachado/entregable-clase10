@@ -1,39 +1,36 @@
+const path = require('path');
 const express = require('express');
-const productsRoutes = require('./routes/productsRoutes');
-const cartsRoutes = require('./routes/cartsRoutes');
-const exphbs = require('express-handlebars');
+const { Server } = require('socket.io');
+const handlebars = require("express-handlebars");
+const productsRouter = require('./routes/productsRoutes');
+const cartsRouter = require('./routes/cartsRoutes');
+const homeRouter = require('./routes/homeRoutes');
+const ProductManager = require('./managers/productManager');
 
- 
-const http = require('http');
-const socketIO = require('socket.io');
-
+const PORT = 8080;
 const app = express();
-const port = 8080;
+const httpServer = app.listen(PORT, () => console.log(`listening on port ${PORT}`))
+const io = new Server(httpServer)
 
-
-app.engine('handlebars', exphbs.engine);
-
-
-
-app.set('view engine', 'handlebars');
-
+app.engine("handlebars", handlebars.engine());
+app.set("views", path.join(__dirname, "../views"));
+app.set("view engine", "handlebars")
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use("/public", express.static(path.join(__dirname, "../public")));
 
+app.use("/api/products", productsRouter);
+app.use("/api/carts", cartsRouter);
+app.use("/", homeRouter)
 
-const server = http.createServer(app);
+io.on("connection", async (socket) => {
+  console.log("new connection ", socket.id)
 
+  socket.emit("products", await ProductManager.getProducts())
 
-const io = socketIO(server);
-
-
-io.on('connection', (socket) => {
-  console.log('Cliente conectado');
-});
-
-app.use('/api/products', productsRoutes);
-app.use('/api/carts', cartsRoutes);
-
-server.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
+  socket.on("new-product", async(data) => {
+    console.log(data)
+    await ProductManager.addProduct(data)
+    io.emit("products", await ProductManager.getProducts())
+  })
+})

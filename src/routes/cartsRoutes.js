@@ -1,35 +1,59 @@
-const express = require('express');
-const router = express.Router();
-const CartManager = require('../cartManager');
+const { Router } = require('express')
+const CartManager = require('../managers/cartManager');
+const ProductManager = require('../managers/productManager');
 
-const cartManager = new CartManager('./src/data/carrito.json');
+const router = Router();
 
-router.post('/', (req, res) => {
-  const cart = req.body;
-  cartManager.createCart(cart);
-  res.status(201).json({ message: 'Carrito creado correctamente' });
-});
-
-router.get('/:cid', (req, res) => {
-  const cartId = req.params.cid;
+router.get('/', async (req, res) => {
   try {
-    const cart = cartManager.getCartById(cartId);
-    res.render('realTimeProducts', { products: cart.products }); 
+    const allCarts = await CartManager.getAllCarts();
+    res.json(allCarts)
   } catch (error) {
-    res.status(404).json({ error: 'Carrito no encontrado' });
+    console.log(error)
   }
 });
 
-router.post('/:cid/product/:pid', (req, res) => {
-  const cartId = req.params.cid;
-  const productId = req.params.pid;
-  const quantity = req.body.quantity;
+router.post("/", async (req, res) => {
   try {
-    cartManager.addProductToCart(cartId, productId, quantity);
-    res.json({ message: 'Producto agregado al carrito correctamente' });
+    const newCart = await CartManager.addCart()
+    res.json(newCart)
   } catch (error) {
-    res.status(404).json({ error: 'Carrito o producto no encontrado' });
+    console.error(error)
   }
 });
 
-module.exports = router;
+router.get("/:cid", async (req, res) => {
+  try {
+    const idCart = parseInt(req.params.cid);
+    const cart = await CartManager.getCart(idCart);
+    if(!cart) {
+      return res.status(404).json({ status: "failed", error: "Cart not exist" })
+    };
+    res.json(cart)
+  } catch (error) {
+    console.error(error)
+  }
+});
+
+router.post("/:cid/product/:pid", async (req, res) => {
+  try {
+    const idCart = parseInt(req.params.cid);
+    const cart = await CartManager.getCart(idCart);
+    if(!cart) {
+      return res.status(404).json({ status: "failed", payload: "Cart not exist" })
+    };
+    const idProduct = parseInt(req.params.pid);
+    const product = await ProductManager.getProductById(idProduct);
+    if(!product) {
+      return res.status(404).json({ status: "failed", payload: "Product not exist" })
+    };
+
+    const addProductToCart = await CartManager.addProductToCart(idCart, idProduct);
+    res.json(addProductToCart)
+  } catch (error) {
+    console.error(error)
+  }
+});
+
+
+module.exports = router
